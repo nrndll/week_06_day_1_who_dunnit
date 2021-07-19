@@ -68,22 +68,132 @@
 
 
 // Episode 5
-const scenario = {
-    murderer: 'Miss Scarlet',
-    room: 'Kitchen',
-    weapon: 'Candle Stick'
-};
+// const scenario = {
+//     murderer: 'Miss Scarlet',
+//     room: 'Kitchen',
+//     weapon: 'Candle Stick'
+// };
 
-const changeWeapon = function (newWeapon) {
-    scenario.weapon = newWeapon;
-}
+// const changeWeapon = function (newWeapon) {
+//     scenario.weapon = newWeapon;
+// }
 
-const declareWeapon = function () {
-    return `The weapon is the ${scenario.weapon}.`;
-}
+// const declareWeapon = function () {
+//     return `The weapon is the ${scenario.weapon}.`;
+// }
 
-changeWeapon('Revolver');
-const verdict = declareWeapon();
-console.log(verdict);
+// changeWeapon('Revolver');
+// const verdict = declareWeapon();
+// console.log(verdict);
 
 // verdict will be Revolver, scenario is declared as a const but the key:value pairs can still be modified. 
+
+
+// Episode 6
+// let murderer = 'Colonel Mustard';
+
+// const changeMurderer = function () {
+//     murderer = 'Mr. Green';
+
+//     const plotTwist = function () {
+//         murderer = 'Mrs. White';
+//     }
+
+//     plotTwist();
+// }
+
+// const declareMurderer = function () {
+//     return `The murderer is ${murderer}.`;
+// }
+
+// changeMurderer();
+// const verdict = declareMurderer();
+// console.log(verdict);
+
+// The verdict will be Mrs White, murderer is not declared within the changeMurderer function so it is inheriting the variable from its parent's scope. So when it assigns new values to the variable these will take effect outside of the function.
+
+
+// Episode 7
+// let murderer = 'Professor Plum';
+
+// const changeMurderer = function () {
+//     murderer = 'Mr. Green';
+
+//     const plotTwist = function () {
+//         let murderer = 'Colonel Mustard';
+
+//         const unexpectedOutcome = function () {
+//             murderer = 'Miss Scarlet';
+//         }
+
+//         unexpectedOutcome();
+//     }
+
+//     plotTwist();
+// }
+
+// const declareMurderer = function () {
+//     return `The murderer is ${murderer}.`;
+// }
+
+// changeMurderer();
+// const verdict = declareMurderer();
+// console.log(verdict);
+
+// The murderer will be Mr Green. plotTwist declares murderer as a new function with block scope so the assignment won't take effect outwith the function. The unexpectedOutcome function will inherit the newly declared murderer variable instead of the original one and so also won't change the outcome. 
+
+
+// Episode 8
+// const scenario = {
+//     murderer: 'Mrs. Peacock',
+//     room: 'Conservatory',
+//     weapon: 'Lead Pipe'
+// };
+
+// const changeScenario = function () {
+//     scenario.murderer = 'Mrs. Peacock';
+//     scenario.room = 'Dining Room';
+
+//     const plotTwist = function (room) {
+//         if (scenario.room === room) {
+//             scenario.murderer = 'Colonel Mustard';
+//         }
+
+//         const unexpectedOutcome = function (murderer) {
+//             if (scenario.murderer === murderer) {
+//                 scenario.weapon = 'Candle Stick';
+//             }
+//         }
+
+//         unexpectedOutcome('Colonel Mustard');
+//     }
+
+//     plotTwist('Dining Room');
+// }
+
+// const declareWeapon = function () {
+//     return `The weapon is ${scenario.weapon}.`
+// }
+
+// changeScenario();
+// const verdict = declareWeapon();
+// console.log(verdict);
+
+// verdict will be Candle Stick. The values of scenario can be modified as long as the variable is not reassigned. 
+
+
+// Episode 9
+let murderer = 'Professor Plum';
+
+if (murderer === 'Professor Plum') {
+    let murderer = 'Mrs. Peacock';
+}
+
+const declareMurderer = function () {
+    return `The murderer is ${murderer}.`;
+}
+
+const verdict = declareMurderer();
+console.log(verdict);
+
+// The murderer will be Professor Plum. The if statement declares murderer within the block scope and so any modification wouldn't take effect on the original assignment of murderer. 
